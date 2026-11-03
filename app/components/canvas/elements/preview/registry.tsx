@@ -1,3 +1,4 @@
+import { SlideResultPreview } from "./slide-result-preview";
 import type { ReactNode } from "react";
 import type { ResultKind } from "@/lib/canvas/types";
 import { getPrimaryUrl } from "@/lib/connectors/asset-url";
@@ -31,6 +32,7 @@ function VideoResultPreview(props: ElementPreviewProps) {
 /** How generated output of each kind renders. */
 export const PREVIEWS_BY_KIND: Record<ResultKind, ElementPreview> = {
 	audio: AudioResultPreview,
+	slide: SlideResultPreview,
 	image: ImageResultPreview,
 	video: VideoResultPreview,
 };

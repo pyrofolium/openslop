@@ -70,7 +70,7 @@ describe("osmlSpec", () => {
 
 	it("sets the visual cadence without dictating what the script opens with", () => {
 		expect(spec).toContain(
-			"a new visual (image or video) at least once before every sentence",
+			"a new visual (image, video or slide) at least once before every sentence",
 		);
 		expect(spec).not.toContain("Start with a visual");
 	});

@@ -21,6 +21,7 @@ export interface ModelGroup {
 }
 
 export const MODEL_GROUPS: ModelGroup[] = [
+	{ key: "slides", label: "Slides", Icon: TextBox, types: ["slide"] },
 	{
 		key: "images",
 		label: "Images",

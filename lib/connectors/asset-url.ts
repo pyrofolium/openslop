@@ -6,16 +6,19 @@ const ASSET_KIND_URL_FIELD = {
 	image: "imageUrl",
 	audio: "audioUrl",
 	video: "videoUrl",
-} as const satisfies Record<ResultKind, keyof AssetResult>;
+} as const satisfies Record<Exclude<ResultKind, "slide">, keyof AssetResult>;
 
 export const ASSET_URL_FIELDS = Object.values(ASSET_KIND_URL_FIELD);
 
 const IDENTITY_FIELDS = [...ASSET_URL_FIELDS, "voiceId"] as const;
 
 export const resultIdentity = (result: AssetResult): string =>
-	compact(IDENTITY_FIELDS.map((field) => result[field])).join("|");
+	compact([
+		...IDENTITY_FIELDS.map((field) => result[field]),
+		result.slide && JSON.stringify(result.slide),
+	]).join("|");
 
-export function assetUrlField(kind: ResultKind) {
+export function assetUrlField(kind: Exclude<ResultKind, "slide">) {
 	return ASSET_KIND_URL_FIELD[kind];
 }
 
@@ -23,5 +26,5 @@ export function getPrimaryUrl(
 	result: AssetResult | null | undefined,
 	kind: ResultKind,
 ): string | undefined {
-	return result?.[assetUrlField(kind)];
+	return kind === "slide" ? undefined : result?.[assetUrlField(kind)];
 }

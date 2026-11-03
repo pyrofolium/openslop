@@ -5,7 +5,7 @@ import { z } from "zod";
 import type { ConnectorModels } from "@/lib/connectors/models";
 import type { AssetConnectorType } from "@/lib/connectors/types";
 
-export type ResultKind = "image" | "video" | "audio";
+export type ResultKind = "image" | "video" | "audio" | "slide";
 
 /** How an element behaves on the rendered timeline. An overlay is speech: it holds the screen for as long as it talks. */
 export type ElementRole = "foreground" | "background" | "overlay" | "effect";
@@ -22,6 +22,12 @@ export type ContentSpec = {
 };
 
 export const CONTENT_TYPES = {
+	slide: {
+		connector: "slide",
+		outputKind: "slide",
+		role: "foreground",
+		layer: "visual",
+	},
 	narration: {
 		connector: "tts",
 		outputKind: "audio",

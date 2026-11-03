@@ -1,3 +1,4 @@
+import { SlideConnector } from "./slide/connector";
 import { HttpImageConnector } from "./image/connector";
 import { HttpLLMConnector } from "./llm/connector";
 import { HttpMusicConnector } from "./music/connector";
@@ -17,6 +18,7 @@ import type {
 } from "./types";
 
 type ConnectorTypeMap = {
+	slide: SlideConnector;
 	llm: LLMConnector;
 	music: HttpMusicConnector;
 	sfx: HttpSFXConnector;
@@ -34,6 +36,7 @@ type ConnectorTypeMap = {
  */
 const CONNECTORS: Record<ConnectorType, ProviderConstructor> = {
 	llm: HttpLLMConnector,
+	slide: SlideConnector,
 	music: HttpMusicConnector,
 	sfx: HttpSFXConnector,
 	image: HttpImageConnector,

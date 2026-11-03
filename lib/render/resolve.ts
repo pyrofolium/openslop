@@ -30,7 +30,7 @@ export function resolveElements(
 
 			const spec = CONTENT_TYPES[element.type];
 			const url = getPrimaryUrl(snapshot.result, spec.outputKind);
-			if (!url) continue;
+			if (spec.outputKind === "slide" ? !snapshot.result.slide : !url) continue;
 
 			const { durationSec: mediaDurationSec, textTimestamps } = snapshot.result;
 			const trim = elementTrim(element, mediaDurationSec);
@@ -43,7 +43,8 @@ export function resolveElements(
 				sceneId: scene.id,
 				sceneNumber,
 				prompt: getPromptText(element),
-				url,
+				url: url ?? "",
+				slide: snapshot.result.slide,
 				...trim,
 				mediaDurationSec,
 				loops: getLoops(element),

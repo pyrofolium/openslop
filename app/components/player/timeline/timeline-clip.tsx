@@ -186,6 +186,8 @@ export function TimelineClip({
 							offset={trim.trimStartSec * pxPerSec}
 						/>
 					</Preview>
+				) : config.outputKind === "slide" ? (
+					<span className="px-2 text-label-xs">HTML slide</span>
 				) : (
 					visualPreviews(
 						element,

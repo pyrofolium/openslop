@@ -111,7 +111,7 @@ describe("listModels", () => {
 describe("modalitiesFor", () => {
 	it("names every type a provider has models for", () => {
 		expect(modalitiesFor("runware").sort()).toEqual(["image", "video"]);
-		expect(modalitiesFor("anthropic")).toEqual(["llm"]);
+		expect(modalitiesFor("anthropic")).toEqual(["slide", "llm"]);
 		expect(modalitiesFor("openslop")).toEqual([...CONNECTOR_TYPES]);
 	});
 });

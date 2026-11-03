@@ -46,7 +46,7 @@ export abstract class BaseAssetConnector<
 	TResult,
 	TGateway extends AssetGateway<TParams> = AssetGateway<TParams>,
 > extends BaseJobConnector<TParams, TResult, TGateway> {
-	abstract readonly assetKey: ResultKind;
+	abstract readonly assetKey: Exclude<ResultKind, "slide">;
 
 	async resolveBundle(bundle: AssetBundle): Promise<TResult> {
 		return {

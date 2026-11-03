@@ -1,3 +1,4 @@
+import { SlideSchema } from "@/lib/slides/schema";
 import type { Caption } from "@remotion/captions";
 import { z } from "zod";
 import type { CanvasElement } from "@/lib/canvas/types";
@@ -15,6 +16,7 @@ import {
 } from "./tts/enums";
 
 export const ASSET_CONNECTOR_TYPES = [
+	"slide",
 	"music",
 	"sfx",
 	"image",
@@ -66,6 +68,7 @@ export type VisualModelEntry = ModelEntry & {
 
 /** What each connector type's catalog entries carry. */
 export type ModelEntries = {
+	slide: ModelEntry;
 	llm: ModelEntry;
 	tts: ModelEntry;
 	voice: ModelEntry;
@@ -155,6 +158,7 @@ export const CaptionSchema = z.object({
 const WordsSchema = z.array(CaptionSchema).optional().catch(undefined);
 
 export const AssetResultSchema = z.object({
+	slide: SlideSchema.optional(),
 	durationSec: z.number(),
 	imageUrl: z.string().optional(),
 	audioUrl: z.string().optional(),
