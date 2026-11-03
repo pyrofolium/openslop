@@ -1,3 +1,4 @@
+import type { Slide } from "@/lib/slides/schema";
 import type { ContentType, ElementRole, LayerType } from "@/lib/canvas/types";
 import type { Caption } from "@remotion/captions";
 import type { CaptionStyle } from "../captions/caption-style";
@@ -21,6 +22,7 @@ export type ResolvedElement = {
 	sceneNumber: number;
 	prompt: string;
 	url: string;
+	slide?: Slide;
 	/** How long it holds the timeline once trimmed; a visual can outlast its media. */
 	durationSec: number;
 	mediaDurationSec: number;

@@ -1,3 +1,4 @@
+import { HtmlSlide } from "../components/html-slide";
 import React, { Fragment, useMemo } from "react";
 import { Audio } from "@remotion/media";
 import {
@@ -87,6 +88,16 @@ function VideoElementPlayer({ element }: { element: ResolvedElement }) {
 }
 
 function SequenceContent({ element }: { element: ResolvedElement }) {
+	if (element.type === "slide") {
+		if (!element.slide) throw new Error("Slide content is missing");
+		return (
+			<HtmlSlide
+				key={JSON.stringify(element.slide)}
+				slide={element.slide}
+				trimStartSec={element.trimStartSec}
+			/>
+		);
+	}
 	switch (element.layer) {
 		case "visual":
 			return (

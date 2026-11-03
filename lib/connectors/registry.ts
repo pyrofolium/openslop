@@ -16,6 +16,7 @@ const speech: ConnectorConfig = { plugins: [createSpeakerVoicePlugin()] };
 
 export const DEFAULT_CONNECTOR_REGISTRY: ConnectorRegistry = {
 	narration: speech,
+	slide: {},
 	character: speech,
 	image: { plugins: buildVisualPlugins("image") },
 	video: {

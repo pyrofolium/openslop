@@ -1,3 +1,5 @@
+import { SLIDE_INSTRUCTION } from "@/lib/slides/prompt";
+import { MOCK_SLIDE } from "@/lib/slides/mock";
 import type {
 	LanguageModelV3Prompt,
 	LanguageModelV3StreamPart,
@@ -147,6 +149,10 @@ Twists: The "big bad wolf" is the kindest soul in the forest; Owl has been silen
 Resolution: Red and Wolf arrive together at Granny's cottage, share their baskets, and the village learns that friendship can grow in the most unlikely places.`;
 
 const MOCK_RESPONSES: [matches: (prompt: string) => boolean, text: string][] = [
+	[
+		(prompt) => prompt.startsWith(SLIDE_INSTRUCTION),
+		JSON.stringify(MOCK_SLIDE),
+	],
 	[(prompt) => prompt.startsWith(DERIVE_INSTRUCTION), MOCK_STYLE],
 	[(prompt) => prompt.startsWith(OUTLINE_INSTRUCTION), MOCK_OUTLINE],
 	[(prompt) => prompt.startsWith(REVIEW_INSTRUCTION), NO_FINDINGS],

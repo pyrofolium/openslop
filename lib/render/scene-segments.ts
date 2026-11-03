@@ -54,7 +54,7 @@ export function findSegmentIndexAtFrame(
 
 function toThumbnail(element: ResolvedElement): SeekThumbnail | null {
 	const { outputKind } = CONTENT_TYPES[element.type];
-	if (outputKind === "audio") return null;
+	if (outputKind === "audio" || outputKind === "slide") return null;
 	return { url: element.url, kind: outputKind };
 }
 

@@ -15,7 +15,9 @@ function OutputPreviewComponent({ outputKind }: { outputKind: ResultKind }) {
 			result={result}
 			error={error}
 			onDiscard={discard}
-			topRight={<UploadedBadge />}
+			topRight={
+				<UploadedBadge label={outputKind === "slide" ? "Edited" : "Uploaded"} />
+			}
 		/>
 	);
 }

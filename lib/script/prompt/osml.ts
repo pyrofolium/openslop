@@ -24,7 +24,7 @@ export function osmlSpec(language: string): string {
 		${languagePrompt(language)}
 
 		## Order
-		Write the story and nothing else, using only the elements your format allows. There must be a new visual (image or video) at least once before every sentence in a character or narration element.
+		Write the story and nothing else, using only the elements your format allows. There must be a new visual (image, video or slide) at least once before every sentence in a character or narration element.
 
 		## Speech
 		- <narration>: what the narrator says. Example: <narration emotion="neutral">The sun was setting in the west.</narration>
@@ -34,6 +34,11 @@ export function osmlSpec(language: string): string {
 		- Never write words in ALL CAPS, because the voice engine mispronounces them. Acronyms like USA stay capitalized.
 		- The only nonverbal cue is [laughter]. Use ... for a pause and ! for strong feeling. Example: <character name="Mia" emotion="happy">[laughter] That's the way I want it!</character>
 		- Nobody sees the prompts, so let the narration mention some of what the pictures show.
+
+		## <slide>
+		- An animated HTML/CSS/JavaScript slide for titles, charts, explainers or kinetic text. Its body is a plain-language design prompt, never executable code or nested HTML.
+		- Use it as a full-screen visual in place of an image or video when precise text or data matters. Include exact copy and supplied chart values.
+		- duration: seconds, as for video. Example: <slide duration="6">Animate a title reading Welcome, then show a bar chart: A = 20, B = 40.</slide>
 
 		## <image>
 		- The body is an image prompt: the time of day, the background, the weather if outdoors, and the objects, in detail.

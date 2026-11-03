@@ -16,9 +16,11 @@ const loadPrefetch = () =>
 
 export function collectUrls(layout: RenderLayout): Set<string> {
 	const urls = new Set<string>();
-	for (const { element } of layout.series) urls.add(element.url);
+	for (const { element } of layout.series)
+		if (element.url) urls.add(element.url);
 	for (const list of Object.values(layout.sequences))
-		if (list) for (const { element } of list) urls.add(element.url);
+		if (list)
+			for (const { element } of list) if (element.url) urls.add(element.url);
 	return urls;
 }
 

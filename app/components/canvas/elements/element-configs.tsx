@@ -1,3 +1,4 @@
+import { SlideCodeButton } from "./slide-code-button";
 import type { ComponentType } from "react";
 import {
 	Voice,
@@ -50,6 +51,14 @@ interface ElementConfig extends ContentSpec {
 type ElementPresentation = Omit<ElementConfig, keyof ContentSpec | "type">;
 
 const PRESENTATION: Record<ContentType, ElementPresentation> = {
+	slide: {
+		label: "Slide",
+		Icon: Video,
+		iconBgClass: "bg-media-video/15",
+		colorClass: "text-media-video",
+		actions: [SlideCodeButton],
+		placeholder: "Describe an animated slide…",
+	},
 	narration: {
 		label: "Narration",
 		Icon: Voice,
